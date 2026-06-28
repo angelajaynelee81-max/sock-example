@@ -318,16 +318,17 @@
     <div>
       <div class="gallery-main" id="galleryMain">
 
-        <!-- REPLACE src="" with your image paths e.g. src="images/midnight-front.jpg" -->
-        <img id="img-midnight-0" src="midnight-front.jpg" />
-        <img id="img-midnight-1" src="midnight-back.png" />
-        <img id="img-midnight-2" src="midnight-sock.png" />
-        <img id="img-midnight-3" src="midnight-detail.jpg" />
+        <img id="img-midnight-0" src="midnight-front.jpg" alt="Pace Run Sock — front view, Midnight/Sage" />
+        <img id="img-midnight-1" src="midnight-back.png" alt="Pace Run Sock — back view, Midnight/Sage" />
+        <img id="img-midnight-2" src="midnight-sock.png" alt="Pace Run Sock — side view, Midnight/Sage" />
+        <img id="img-midnight-3" src="midnight-detail.jpg" alt="Pace Run Sock — detail view, Midnight/Sage" />
+        <img id="img-midnight-4" src="midnight-running.jpg" alt="Pace Run Sock — lifestyle, Midnight/Sage" />
 
-        <img id="img-slate-0" src="slate-front.jpg" />
-        <img id="img-slate-1" src="slate-back.jpg" />
-        <img id="img-slate-2" src="slate-side.jpg" />
-        <img id="img-slate-3" src="slate-detail.jpg" />
+        <img id="img-slate-0" src="slate-front.jpg" alt="Pace Run Sock — front view, Slate/Stone" />
+        <img id="img-slate-1" src="slate-back.jpg" alt="Pace Run Sock — back view, Slate/Stone" />
+        <img id="img-slate-2" src="slate-side.jpg" alt="Pace Run Sock — side view, Slate/Stone" />
+        <img id="img-slate-3" src="slate-detail.jpg" alt="Pace Run Sock — detail view, Slate/Stone" />
+        <img id="img-slate-4" src="slate-running.jpg" alt="Pace Run Sock — lifestyle, Slate/Stone" />
 
         <div class="img-placeholder" id="mainPlaceholder">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
@@ -342,20 +343,29 @@
 
       <div class="gallery-thumbs">
         <div class="thumb active" id="thumb-0" onclick="selectThumb(0)" aria-label="View front">
-          <img id="thumb-img-midnight-0" src="" alt="" /><img id="thumb-img-slate-0" src="" alt="" style="display:none;" />
+          <img id="thumb-img-midnight-0" src="midnight-front.jpg" alt="" />
+          <img id="thumb-img-slate-0" src="slate-front.jpg" alt="" style="display:none;" />
           <span class="thumb-label">Front</span>
         </div>
         <div class="thumb" id="thumb-1" onclick="selectThumb(1)" aria-label="View back">
-          <img id="thumb-img-midnight-1" src="" alt="" /><img id="thumb-img-slate-1" src="" alt="" style="display:none;" />
+          <img id="thumb-img-midnight-1" src="midnight-back.png" alt="" />
+          <img id="thumb-img-slate-1" src="slate-back.jpg" alt="" style="display:none;" />
           <span class="thumb-label">Back</span>
         </div>
         <div class="thumb" id="thumb-2" onclick="selectThumb(2)" aria-label="View side">
-          <img id="thumb-img-midnight-2" src="" alt="" /><img id="thumb-img-slate-2" src="" alt="" style="display:none;" />
+          <img id="thumb-img-midnight-2" src="midnight-sock.png" alt="" />
+          <img id="thumb-img-slate-2" src="slate-side.jpg" alt="" style="display:none;" />
           <span class="thumb-label">Side</span>
         </div>
         <div class="thumb" id="thumb-3" onclick="selectThumb(3)" aria-label="View detail">
-          <img id="thumb-img-midnight-3" src="" alt="" /><img id="thumb-img-slate-3" src="" alt="" style="display:none;" />
+          <img id="thumb-img-midnight-3" src="midnight-detail.jpg" alt="" />
+          <img id="thumb-img-slate-3" src="slate-detail.jpg" alt="" style="display:none;" />
           <span class="thumb-label">Detail</span>
+        </div>
+        <div class="thumb" id="thumb-4" onclick="selectThumb(4)" aria-label="View lifestyle">
+          <img id="thumb-img-midnight-4" src="midnight-running.jpg" alt="" />
+          <img id="thumb-img-slate-4" src="slate-running.jpg" alt="" style="display:none;" />
+          <span class="thumb-label">Running</span>
         </div>
       </div>
     </div>
@@ -439,7 +449,7 @@
   }
 
   function showThumbImages() {
-    [0,1,2,3].forEach(i => {
+    [0,1,2,3,4].forEach(i => {
       ['midnight','slate'].forEach(c => {
         const el = document.getElementById('thumb-img-' + c + '-' + i);
         if (el) el.style.display = (c === currentColour && el.src && el.src !== window.location.href) ? 'block' : 'none';
@@ -449,7 +459,7 @@
 
   function selectThumb(i) {
     currentThumb = i;
-    [0,1,2,3].forEach(n => {
+    [0,1,2,3,4].forEach(n => {
       document.getElementById('thumb-' + n).classList.toggle('active', n === i);
     });
     showMainImage();
@@ -469,8 +479,8 @@
     let step = 0;
     rotateInterval = setInterval(() => {
       step++;
-      selectThumb(step % 4);
-      if (step >= 7) { clearInterval(rotateInterval); rotateInterval = null; selectThumb(0); }
+      selectThumb(step % 5);
+      if (step >= 9) { clearInterval(rotateInterval); rotateInterval = null; selectThumb(0); }
     }, 420);
   }
 
