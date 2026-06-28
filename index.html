@@ -380,7 +380,11 @@
     }
     msg.className = 'buy-msg success';
     msg.textContent = '✓ Added to cart — ' + colours[currentColour].name + ', size ' + size;
-  }
+  }  
+  window.addEventListener('load', function() {
+    selectThumb(0);
+    showThumbImages();
+  });
 </script>
 
 </body>
