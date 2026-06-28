@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pace Run Sock — Performance Socks NZ</title>
+  <meta name="description" content="The Pace Run Sock. Built for everyday training. Arch compression, moisture-wicking fabric, reinforced heel. Free NZ shipping over $50." />
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --black: #1a1a1a;
+      --white: #ffffff;
+      --off-white: #f7f6f4;
+      --mid-gray: #6b6b6b;
+      --light-gray: #e8e6e3;
+      --border: #e0dedd;
+      --sage: #8a9e7a;
+      --slate: #4a5568;
+      --stone: #b8a898;
+      --radius-sm: 6px;
+      --radius-md: 10px;
+      --radius-lg: 14px;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+      background: var(--white);
+      color: var(--black);
+      font-size: 15px;
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1rem 2rem;
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      background: var(--white);
+      z-index: 10;
+    }
+    .nav-logo {
+      font-size: 18px;
+      font-weight: 600;
+      letter-spacing: 4px;
+      color: var(--black);
+      text-decoration: none;
+    }
+    .nav-tagline {
+      font-size: 11px;
+      color: var(--mid-gray);
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      padding: 2.5rem 2rem;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .gallery-main {
+      background: var(--off-white);
+      border-radius: var(--radius-lg);
+      aspect-ratio: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      position: relative;
+    }
+    .gallery-main img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: var(--radius-lg);
+      display: none;
+      transition: opacity 0.25s ease;
+    }
+    .gallery-main img.active { display: block; }
+    .img-placeholder {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      color: #aaa;
+    }
+    .img-placeholder svg { width: 48px; height: 48px; opacity: 0.4; }
+    .img-placeholder span { font-size: 12px; }
+
+    .rotate-btn {
+      position: absolute;
+      bottom: 14px;
+      right: 14px;
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 6px 12px;
+      font-size: 11px;
+      color: var(--mid-gray);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      transition: color 0.15s, border-color 0.15s;
+    }
+    .rotate-btn:hover { color: var(--black); border-color: var(--black); }
+    .rotate-btn svg { width: 13px; height: 13px; }
+
+    .gallery-thumbs {
+      display: flex;
+      gap: 8px;
+      margin-top: 10px;
+    }
+    .thumb {
+      width: 72px;
+      height: 72px;
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border);
+      overflow: hidden;
+      cursor: pointer;
+      background: var(--off-white);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: border-color 0.15s;
+      flex-shrink: 0;
+      position: relative;
+    }
+    .thumb:hover { border-color: #aaa; }
+    .thumb.active { border: 1.5px solid var(--black); }
+    .thumb img { width: 100%; height: 100%; object-fit: cover; display: none; }
+    .thumb img.active { display: block; }
+    .thumb-label {
+      font-size: 10px;
+      color: #aaa;
+      text-align: center;
+      line-height: 1.3;
+      padding: 4px;
+      position: absolute;
+    }
+    .thumb img.active + .thumb-label { display: none; }
+
+    .product-details { display: flex; flex-direction: column; justify-content: center; }
+
+    .product-category {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: var(--mid-gray);
+      margin-bottom: 8px;
+    }
+
+    h1 {
+      font-size: 28px;
+      font-weight: 600;
+      line-height: 1.15;
+      margin-bottom: 0.75rem;
+      letter-spacing: -0.3px;
+    }
+
+    .product-desc {
+      font-size: 14px;
+      color: var(--mid-gray);
+      line-height: 1.65;
+      margin-bottom: 1.25rem;
+    }
+
+    .price {
+      font-size: 26px;
+      font-weight: 600;
+      margin-bottom: 1.5rem;
+    }
+    .price span {
+      font-size: 13px;
+      font-weight: 400;
+      color: var(--mid-gray);
+      margin-left: 4px;
+    }
+
+    .option-label {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      color: var(--mid-gray);
+      margin-bottom: 8px;
+    }
+
+    .swatches {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      margin-bottom: 1.25rem;
+    }
+    .swatch {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      border: 2px solid transparent;
+      cursor: pointer;
+      transition: border-color 0.15s, transform 0.1s;
+    }
+    .swatch:hover { transform: scale(1.1); }
+    .swatch.active { border-color: var(--black); }
+
+    select {
+      width: 100%;
+      padding: 11px 14px;
+      font-size: 14px;
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border);
+      background: var(--white);
+      color: var(--black);
+      margin-bottom: 1rem;
+      cursor: pointer;
+      appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%236b6b6b' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 14px center;
+    }
+    select:focus { outline: 2px solid var(--black); outline-offset: 1px; }
+
+    .buy-btn {
+      width: 100%;
+      padding: 14px;
+      font-size: 15px;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      border-radius: var(--radius-md);
+      border: none;
+      background: var(--black);
+      color: var(--white);
+      cursor: pointer;
+      transition: background 0.15s, transform 0.1s;
+      margin-bottom: 0.75rem;
+    }
+    .buy-btn:hover { background: #333; }
+    .buy-btn:active { transform: scale(0.99); }
+
+    .buy-msg {
+      font-size: 13px;
+      text-align: center;
+      min-height: 20px;
+      margin-bottom: 0.5rem;
+    }
+    .buy-msg.success { color: #3a6e3a; }
+    .buy-msg.error { color: #a32d2d; }
+
+    .features {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 8px;
+      margin-top: 1.25rem;
+    }
+    .feature {
+      text-align: center;
+      padding: 0.875rem 0.5rem;
+      background: var(--off-white);
+      border-radius: var(--radius-md);
+    }
+    .feature svg { width: 20px; height: 20px; color: var(--mid-gray); margin-bottom: 5px; }
+    .feature p { font-size: 11px; color: var(--mid-gray); line-height: 1.3; }
+
+    .shipping-banner {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 0.875rem 1rem;
+      background: var(--off-white);
+      border-radius: var(--radius-md);
+      margin-top: 1.25rem;
+      font-size: 12px;
+      color: var(--mid-gray);
+    }
+    .shipping-banner svg { width: 16px; height: 16px; flex-shrink: 0; }
+
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1100px;
+      margin: 2rem auto 0;
+    }
+    footer span { font-size: 11px; color: var(--mid-gray); }
+
+    @media (max-width: 680px) {
+      .hero { grid-template-columns: 1fr; gap: 1.5rem; padding: 1.5rem 1rem; }
+      nav { padding: 1rem; }
+      footer { padding: 1rem; flex-direction: column; gap: 6px; text-align: center; }
+      .features { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      * { transition: none !important; animation: none !important; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="#" class="nav-logo">PACE</a>
+  <span class="nav-tagline">Performance Socks</span>
+</nav>
+
+<main>
+  <div class="hero">
+
+    <div>
+      <div class="gallery-main" id="galleryMain">
+
+        <!-- REPLACE src="" with your image paths e.g. src="images/midnight-front.jpg" -->
+        <img id="img-midnight-0" src="" alt="Pace Run Sock — front view, Midnight/Sage" />
+        <img id="img-midnight-1" src="" alt="Pace Run Sock — back view, Midnight/Sage" />
+        <img id="img-midnight-2" src="" alt="Pace Run Sock — side view, Midnight/Sage" />
+        <img id="img-midnight-3" src="" alt="Pace Run Sock — detail view, Midnight/Sage" />
+
+        <img id="img-slate-0" src="" alt="Pace Run Sock — front view, Slate/Stone" />
+        <img id="img-slate-1" src="" alt="Pace Run Sock — back view, Slate/Stone" />
+        <img id="img-slate-2" src="" alt="Pace Run Sock — side view, Slate/Stone" />
+        <img id="img-slate-3" src="" alt="Pace Run Sock — detail view, Slate/Stone" />
+
+        <div class="img-placeholder" id="mainPlaceholder">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+          <span>Add product images</span>
+        </div>
+
+        <button class="rotate-btn" onclick="triggerRotate()" aria-label="360 degree view">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12a9 9 0 11-9-9c2.52 0 4.93 1 6.74 2.74L21 8"/><path d="M21 3v5h-5"/></svg>
+          360°
+        </button>
+      </div>
+
+      <div class="gallery-thumbs">
+        <div class="thumb active" id="thumb-0" onclick="selectThumb(0)" aria-label="View front">
+          <img id="thumb-img-midnight-0" src="" alt="" /><img id="thumb-img-slate-0" src="" alt="" style="display:none;" />
+          <span class="thumb-label">Front</span>
+        </div>
+        <div class="thumb" id="thumb-1" onclick="selectThumb(1)" aria-label="View back">
+          <img id="thumb-img-midnight-1" src="" alt="" /><img id="thumb-img-slate-1" src="" alt="" style="display:none;" />
+          <span class="thumb-label">Back</span>
+        </div>
+        <div class="thumb" id="thumb-2" onclick="selectThumb(2)" aria-label="View side">
+          <img id="thumb-img-midnight-2" src="" alt="" /><img id="thumb-img-slate-2" src="" alt="" style="display:none;" />
+          <span class="thumb-label">Side</span>
+        </div>
+        <div class="thumb" id="thumb-3" onclick="selectThumb(3)" aria-label="View detail">
+          <img id="thumb-img-midnight-3" src="" alt="" /><img id="thumb-img-slate-3" src="" alt="" style="display:none;" />
+          <span class="thumb-label">Detail</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="product-details">
+      <p class="product-category">Running</p>
+      <h1>Pace Run Sock</h1>
+      <p class="product-desc">Built for everyday training. Arch compression, moisture-wicking fabric, and a reinforced heel — so you can focus on the run, not your feet.</p>
+
+      <div class="price">$24.99 <span>NZD / pair</span></div>
+
+      <p class="option-label">Colour — <span id="colourName" style="text-transform: none; letter-spacing: 0; color: var(--black);">Midnight / Sage</span></p>
+      <div class="swatches">
+        <button class="swatch active" id="swatch-midnight" style="background: #1a1a1a;" onclick="setColour('midnight')" aria-label="Select Midnight Sage"></button>
+        <button class="swatch" id="swatch-slate" style="background: #4a5568;" onclick="setColour('slate')" aria-label="Select Slate Stone"></button>
+      </div>
+
+      <p class="option-label">Size</p>
+      <select id="sizeSelect" aria-label="Select sock size">
+        <option value="">Select a size</option>
+        <option value="S">Small (EU 36–39)</option>
+        <option value="M">Medium (EU 40–43)</option>
+        <option value="L">Large (EU 44–47)</option>
+      </select>
+
+      <button class="buy-btn" onclick="handleBuy()">Buy Now</button>
+      <div class="buy-msg" id="buyMsg" role="alert" aria-live="polite"></div>
+
+      <div class="features">
+        <div class="feature">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"/><path d="M12 6v6l4 2"/></svg>
+          <p>Moisture wicking</p>
+        </div>
+        <div class="feature">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+          <p>Arch support</p>
+        </div>
+        <div class="feature">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          <p>Reinforced heel</p>
+        </div>
+        <div class="feature">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/></svg>
+          <p>Machine wash</p>
+        </div>
+      </div>
+
+      <div class="shipping-banner">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M5 17H3a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11a2 2 0 0 1 2 2v3"/><rect x="9" y="11" width="14" height="10" rx="2"/><circle cx="12" cy="21" r="1"/><circle cx="20" cy="21" r="1"/></svg>
+        Free NZ shipping on orders over $50 · 30-day returns
+      </div>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <span>© 2025 Pace Performance</span>
+  <span>Made for runners · NZ</span>
+</footer>
+
+<script>
+  const colours = {
+    midnight: { name: 'Midnight / Sage' },
+    slate:    { name: 'Slate / Stone' }
+  };
+
+  let currentColour = 'midnight';
+  let currentThumb = 0;
+  let rotateInterval = null;
+
+  function showMainImage() {
+    document.querySelectorAll('[id^="img-"]').forEach(el => el.classList.remove('active'));
+    const placeholder = document.getElementById('mainPlaceholder');
+    const target = document.getElementById('img-' + currentColour + '-' + currentThumb);
+    if (target && target.src && target.src !== window.location.href) {
+      target.classList.add('active');
+      placeholder.style.display = 'none';
+    } else {
+      placeholder.style.display = 'flex';
+    }
+  }
+
+  function showThumbImages() {
+    [0,1,2,3].forEach(i => {
+      ['midnight','slate'].forEach(c => {
+        const el = document.getElementById('thumb-img-' + c + '-' + i);
+        if (el) el.style.display = (c === currentColour && el.src && el.src !== window.location.href) ? 'block' : 'none';
+      });
+    });
+  }
+
+  function selectThumb(i) {
+    currentThumb = i;
+    [0,1,2,3].forEach(n => {
+      document.getElementById('thumb-' + n).classList.toggle('active', n === i);
+    });
+    showMainImage();
+  }
+
+  function setColour(c) {
+    currentColour = c;
+    document.getElementById('colourName').textContent = colours[c].name;
+    document.getElementById('swatch-midnight').classList.toggle('active', c === 'midnight');
+    document.getElementById('swatch-slate').classList.toggle('active', c === 'slate');
+    showThumbImages();
+    selectThumb(0);
+  }
+
+  function triggerRotate() {
+    if (rotateInterval) { clearInterval(rotateInterval); rotateInterval = null; }
+    let step = 0;
+    rotateInterval = setInterval(() => {
+      step++;
+      selectThumb(step % 4);
+      if (step >= 7) { clearInterval(rotateInterval); rotateInterval = null; selectThumb(0); }
+    }, 420);
+  }
+
+  function handleBuy() {
+    const size = document.getElementById('sizeSelect').value;
+    const msg = document.getElementById('buyMsg');
+    if (!size) {
+      msg.className = 'buy-msg error';
+      msg.textContent = 'Please select a size to continue.';
+      return;
+    }
+    msg.className = 'buy-msg success';
+    msg.textContent = '✓ Added to cart — ' + colours[currentColour].name + ', size ' + size;
+  }
+</script>
+
+</body>
+</html>
