@@ -14,12 +14,7 @@
       --white: #ffffff;
       --off-white: #f7f6f4;
       --mid-gray: #6b6b6b;
-      --light-gray: #e8e6e3;
       --border: #e0dedd;
-      --sage: #8a9e7a;
-      --slate: #4a5568;
-      --stone: #b8a898;
-      --radius-sm: 6px;
       --radius-md: 10px;
       --radius-lg: 14px;
     }
@@ -44,19 +39,8 @@
       background: var(--white);
       z-index: 10;
     }
-    .nav-logo {
-      font-size: 18px;
-      font-weight: 600;
-      letter-spacing: 4px;
-      color: var(--black);
-      text-decoration: none;
-    }
-    .nav-tagline {
-      font-size: 11px;
-      color: var(--mid-gray);
-      letter-spacing: 1.5px;
-      text-transform: uppercase;
-    }
+    .nav-logo { font-size: 18px; font-weight: 600; letter-spacing: 4px; color: var(--black); text-decoration: none; }
+    .nav-tagline { font-size: 11px; color: var(--mid-gray); letter-spacing: 1.5px; text-transform: uppercase; }
 
     .hero {
       display: grid;
@@ -77,22 +61,9 @@
       overflow: hidden;
       position: relative;
     }
-    .gallery-main img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      border-radius: var(--radius-lg);
-      display: none;
-      transition: opacity 0.25s ease;
-    }
+    .gallery-main img { width: 100%; height: 100%; object-fit: cover; border-radius: var(--radius-lg); display: none; }
     .gallery-main img.active { display: block; }
-    .img-placeholder {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 10px;
-      color: #aaa;
-    }
+    .img-placeholder { display: flex; flex-direction: column; align-items: center; gap: 10px; color: #aaa; }
     .img-placeholder svg { width: 48px; height: 48px; opacity: 0.4; }
     .img-placeholder span { font-size: 12px; }
 
@@ -110,16 +81,11 @@
       display: flex;
       align-items: center;
       gap: 5px;
-      transition: color 0.15s, border-color 0.15s;
     }
     .rotate-btn:hover { color: var(--black); border-color: var(--black); }
     .rotate-btn svg { width: 13px; height: 13px; }
 
-    .gallery-thumbs {
-      display: flex;
-      gap: 8px;
-      margin-top: 10px;
-    }
+    .gallery-thumbs { display: flex; gap: 8px; margin-top: 10px; }
     .thumb {
       width: 72px;
       height: 72px;
@@ -131,7 +97,6 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      transition: border-color 0.15s;
       flex-shrink: 0;
       position: relative;
     }
@@ -139,75 +104,19 @@
     .thumb.active { border: 1.5px solid var(--black); }
     .thumb img { width: 100%; height: 100%; object-fit: cover; display: none; }
     .thumb img.active { display: block; }
-    .thumb-label {
-      font-size: 10px;
-      color: #aaa;
-      text-align: center;
-      line-height: 1.3;
-      padding: 4px;
-      position: absolute;
-    }
+    .thumb-label { font-size: 10px; color: #aaa; text-align: center; line-height: 1.3; padding: 4px; position: absolute; }
     .thumb img.active + .thumb-label { display: none; }
 
     .product-details { display: flex; flex-direction: column; justify-content: center; }
+    .product-category { font-size: 11px; text-transform: uppercase; letter-spacing: 1.5px; color: var(--mid-gray); margin-bottom: 8px; }
+    h1 { font-size: 28px; font-weight: 600; line-height: 1.15; margin-bottom: 0.75rem; letter-spacing: -0.3px; }
+    .product-desc { font-size: 14px; color: var(--mid-gray); line-height: 1.65; margin-bottom: 1.25rem; }
+    .price { font-size: 26px; font-weight: 600; margin-bottom: 1.5rem; }
+    .price span { font-size: 13px; font-weight: 400; color: var(--mid-gray); margin-left: 4px; }
+    .option-label { font-size: 11px; text-transform: uppercase; letter-spacing: 0.8px; color: var(--mid-gray); margin-bottom: 8px; }
 
-    .product-category {
-      font-size: 11px;
-      text-transform: uppercase;
-      letter-spacing: 1.5px;
-      color: var(--mid-gray);
-      margin-bottom: 8px;
-    }
-
-    h1 {
-      font-size: 28px;
-      font-weight: 600;
-      line-height: 1.15;
-      margin-bottom: 0.75rem;
-      letter-spacing: -0.3px;
-    }
-
-    .product-desc {
-      font-size: 14px;
-      color: var(--mid-gray);
-      line-height: 1.65;
-      margin-bottom: 1.25rem;
-    }
-
-    .price {
-      font-size: 26px;
-      font-weight: 600;
-      margin-bottom: 1.5rem;
-    }
-    .price span {
-      font-size: 13px;
-      font-weight: 400;
-      color: var(--mid-gray);
-      margin-left: 4px;
-    }
-
-    .option-label {
-      font-size: 11px;
-      text-transform: uppercase;
-      letter-spacing: 0.8px;
-      color: var(--mid-gray);
-      margin-bottom: 8px;
-    }
-
-    .swatches {
-      display: flex;
-      gap: 10px;
-      align-items: center;
-      margin-bottom: 1.25rem;
-    }
-    .swatch {
-      width: 28px;
-      height: 28px;
-      border-radius: 50%;
-      border: 2px solid transparent;
-      cursor: pointer;
-      transition: border-color 0.15s, transform 0.1s;
-    }
+    .swatches { display: flex; gap: 10px; align-items: center; margin-bottom: 1.25rem; }
+    .swatch { width: 28px; height: 28px; border-radius: 50%; border: 2px solid transparent; cursor: pointer; transition: transform 0.1s; }
     .swatch:hover { transform: scale(1.1); }
     .swatch.active { border-color: var(--black); }
 
@@ -226,46 +135,27 @@
       background-repeat: no-repeat;
       background-position: right 14px center;
     }
-    select:focus { outline: 2px solid var(--black); outline-offset: 1px; }
 
     .buy-btn {
       width: 100%;
       padding: 14px;
       font-size: 15px;
       font-weight: 600;
-      letter-spacing: 0.5px;
       border-radius: var(--radius-md);
       border: none;
       background: var(--black);
       color: var(--white);
       cursor: pointer;
-      transition: background 0.15s, transform 0.1s;
       margin-bottom: 0.75rem;
     }
     .buy-btn:hover { background: #333; }
-    .buy-btn:active { transform: scale(0.99); }
 
-    .buy-msg {
-      font-size: 13px;
-      text-align: center;
-      min-height: 20px;
-      margin-bottom: 0.5rem;
-    }
+    .buy-msg { font-size: 13px; text-align: center; min-height: 20px; margin-bottom: 0.5rem; }
     .buy-msg.success { color: #3a6e3a; }
     .buy-msg.error { color: #a32d2d; }
 
-    .features {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 8px;
-      margin-top: 1.25rem;
-    }
-    .feature {
-      text-align: center;
-      padding: 0.875rem 0.5rem;
-      background: var(--off-white);
-      border-radius: var(--radius-md);
-    }
+    .features { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin-top: 1.25rem; }
+    .feature { text-align: center; padding: 0.875rem 0.5rem; background: var(--off-white); border-radius: var(--radius-md); }
     .feature svg { width: 20px; height: 20px; color: var(--mid-gray); margin-bottom: 5px; }
     .feature p { font-size: 11px; color: var(--mid-gray); line-height: 1.3; }
 
@@ -299,10 +189,6 @@
       footer { padding: 1rem; flex-direction: column; gap: 6px; text-align: center; }
       .features { grid-template-columns: repeat(2, 1fr); }
     }
-
-    @media (prefers-reduced-motion: reduce) {
-      * { transition: none !important; animation: none !important; }
-    }
   </style>
 </head>
 <body>
@@ -318,17 +204,17 @@
     <div>
       <div class="gallery-main" id="galleryMain">
 
-        <img id="img-midnight-0" src="midnight-front.jpg" alt="Pace Run Sock — front view, Midnight/Sage" />
-        <img id="img-midnight-1" src="midnight-back.png" alt="Pace Run Sock — back view, Midnight/Sage" />
-        <img id="img-midnight-2" src="midnight-sock.png" alt="Pace Run Sock — side view, Midnight/Sage" />
-        <img id="img-midnight-3" src="midnight-detail.jpg" alt="Pace Run Sock — detail view, Midnight/Sage" />
-        <img id="img-midnight-4" src="midnight-running.jpg" alt="Pace Run Sock — lifestyle, Midnight/Sage" />
+        <img id="img-midnight-0" src="midnight-front.png" alt="Pace Run Sock — front view, Midnight" />
+        <img id="img-midnight-1" src="midnight-back.png" alt="Pace Run Sock — back view, Midnight" />
+        <img id="img-midnight-2" src="midnight-side.png" alt="Pace Run Sock — side view, Midnight" />
+        <img id="img-midnight-3" src="midnight-detail.png" alt="Pace Run Sock — detail view, Midnight" />
+        <img id="img-midnight-4" src="midnight-running.png" alt="Pace Run Sock — lifestyle, Midnight" />
 
-        <img id="img-slate-0" src="slate-front.jpg" alt="Pace Run Sock — front view, Slate/Stone" />
-        <img id="img-slate-1" src="slate-back.jpg" alt="Pace Run Sock — back view, Slate/Stone" />
-        <img id="img-slate-2" src="slate-side.jpg" alt="Pace Run Sock — side view, Slate/Stone" />
-        <img id="img-slate-3" src="slate-detail.jpg" alt="Pace Run Sock — detail view, Slate/Stone" />
-        <img id="img-slate-4" src="slate-running.jpg" alt="Pace Run Sock — lifestyle, Slate/Stone" />
+        <img id="img-slate-0" src="slate-front.png" alt="Pace Run Sock — front view, Slate" />
+        <img id="img-slate-1" src="slate-back.png" alt="Pace Run Sock — back view, Slate" />
+        <img id="img-slate-2" src="slate-side.png" alt="Pace Run Sock — side view, Slate" />
+        <img id="img-slate-3" src="slate-detail.png" alt="Pace Run Sock — detail view, Slate" />
+        <img id="img-slate-4" src="slate-running.png" alt="Pace Run Sock — lifestyle, Slate" />
 
         <div class="img-placeholder" id="mainPlaceholder">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
@@ -342,29 +228,29 @@
       </div>
 
       <div class="gallery-thumbs">
-        <div class="thumb active" id="thumb-0" onclick="selectThumb(0)" aria-label="View front">
-          <img id="thumb-img-midnight-0" src="midnight-front.jpg" alt="" />
-          <img id="thumb-img-slate-0" src="slate-front.jpg" alt="" style="display:none;" />
+        <div class="thumb active" id="thumb-0" onclick="selectThumb(0)">
+          <img id="thumb-img-midnight-0" src="midnight-front.png" alt="" />
+          <img id="thumb-img-slate-0" src="slate-front.png" alt="" style="display:none;" />
           <span class="thumb-label">Front</span>
         </div>
-        <div class="thumb" id="thumb-1" onclick="selectThumb(1)" aria-label="View back">
+        <div class="thumb" id="thumb-1" onclick="selectThumb(1)">
           <img id="thumb-img-midnight-1" src="midnight-back.png" alt="" />
-          <img id="thumb-img-slate-1" src="slate-back.jpg" alt="" style="display:none;" />
+          <img id="thumb-img-slate-1" src="slate-back.png" alt="" style="display:none;" />
           <span class="thumb-label">Back</span>
         </div>
-        <div class="thumb" id="thumb-2" onclick="selectThumb(2)" aria-label="View side">
-          <img id="thumb-img-midnight-2" src="midnight-sock.png" alt="" />
-          <img id="thumb-img-slate-2" src="slate-side.jpg" alt="" style="display:none;" />
+        <div class="thumb" id="thumb-2" onclick="selectThumb(2)">
+          <img id="thumb-img-midnight-2" src="midnight-side.png" alt="" />
+          <img id="thumb-img-slate-2" src="slate-side.png" alt="" style="display:none;" />
           <span class="thumb-label">Side</span>
         </div>
-        <div class="thumb" id="thumb-3" onclick="selectThumb(3)" aria-label="View detail">
-          <img id="thumb-img-midnight-3" src="midnight-detail.jpg" alt="" />
-          <img id="thumb-img-slate-3" src="slate-detail.jpg" alt="" style="display:none;" />
+        <div class="thumb" id="thumb-3" onclick="selectThumb(3)">
+          <img id="thumb-img-midnight-3" src="midnight-detail.png" alt="" />
+          <img id="thumb-img-slate-3" src="slate-detail.png" alt="" style="display:none;" />
           <span class="thumb-label">Detail</span>
         </div>
-        <div class="thumb" id="thumb-4" onclick="selectThumb(4)" aria-label="View lifestyle">
-          <img id="thumb-img-midnight-4" src="midnight-running.jpg" alt="" />
-          <img id="thumb-img-slate-4" src="slate-running.jpg" alt="" style="display:none;" />
+        <div class="thumb" id="thumb-4" onclick="selectThumb(4)">
+          <img id="thumb-img-midnight-4" src="midnight-running.png" alt="" />
+          <img id="thumb-img-slate-4" src="slate-running.png" alt="" style="display:none;" />
           <span class="thumb-label">Running</span>
         </div>
       </div>
@@ -379,12 +265,12 @@
 
       <p class="option-label">Colour — <span id="colourName" style="text-transform: none; letter-spacing: 0; color: var(--black);">Midnight / Sage</span></p>
       <div class="swatches">
-        <button class="swatch active" id="swatch-midnight" style="background: #1a1a1a;" onclick="setColour('midnight')" aria-label="Select Midnight Sage"></button>
-        <button class="swatch" id="swatch-slate" style="background: #4a5568;" onclick="setColour('slate')" aria-label="Select Slate Stone"></button>
+        <button class="swatch active" id="swatch-midnight" style="background: #1a1a1a;" onclick="setColour('midnight')" aria-label="Midnight"></button>
+        <button class="swatch" id="swatch-slate" style="background: #4a5568;" onclick="setColour('slate')" aria-label="Slate"></button>
       </div>
 
       <p class="option-label">Size</p>
-      <select id="sizeSelect" aria-label="Select sock size">
+      <select id="sizeSelect">
         <option value="">Select a size</option>
         <option value="S">Small (EU 36–39)</option>
         <option value="M">Medium (EU 40–43)</option>
@@ -396,25 +282,25 @@
 
       <div class="features">
         <div class="feature">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"/><path d="M12 6v6l4 2"/></svg>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"/><path d="M12 6v6l4 2"/></svg>
           <p>Moisture wicking</p>
         </div>
         <div class="feature">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
           <p>Arch support</p>
         </div>
         <div class="feature">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
           <p>Reinforced heel</p>
         </div>
         <div class="feature">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/></svg>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/></svg>
           <p>Machine wash</p>
         </div>
       </div>
 
       <div class="shipping-banner">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M5 17H3a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11a2 2 0 0 1 2 2v3"/><rect x="9" y="11" width="14" height="10" rx="2"/><circle cx="12" cy="21" r="1"/><circle cx="20" cy="21" r="1"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 17H3a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11a2 2 0 0 1 2 2v3"/><rect x="9" y="11" width="14" height="10" rx="2"/><circle cx="12" cy="21" r="1"/><circle cx="20" cy="21" r="1"/></svg>
         Free NZ shipping on orders over $50 · 30-day returns
       </div>
     </div>
